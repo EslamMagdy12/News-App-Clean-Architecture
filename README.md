@@ -16,12 +16,12 @@ features a clean, modern UI with interactive gestures such as swipe-to-delete an
 
 ### Login & Signup
 
-|                  Login                   |                  Signup                   |
-|:----------------------------------------:|:-----------------------------------------:|
-| ![Login](Screenshot_20250208_013600.png) | ![Signup](Screenshot_20250208_013616.png) |
+|         Login          |         Signup         |
+|:----------------------:|:----------------------:|
+| <img src="Screenshot_20250208_013600.png" width="300" alt="Login"> | <img src="Screenshot_20250208_013616.png" width="300" alt="Signup"> |
 
 ### News, Favorite & Details
 
-|                  News                   |                  Favorite                   |                  Details                   |
-|:---------------------------------------:|:-------------------------------------------:|:------------------------------------------:|
-| ![News](Screenshot_20250208_012023.png) | ![Favorite](Screenshot_20250208_013513.png) | ![Details](Screenshot_20250208_013433.png) |
+|         News          |        Favorite        |        Details         |
+|:---------------------:|:----------------------:|:----------------------:|
+| <img src="Screenshot_20250208_012023.png" width="300" alt="News"> | <img src="Screenshot_20250208_013513.png" width="300" alt="Favorite"> | <img src="Screenshot_20250208_013433.png" width="300" alt="Details"> |
