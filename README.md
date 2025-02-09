@@ -16,12 +16,12 @@ features a clean, modern UI with interactive gestures such as swipe-to-delete an
 
 ### Login & Signup
 
-|         Login          |         Signup         |
-|:----------------------:|:----------------------:|
-| <div style="width:300px;"><img src="Screenshot_20250208_013600.png" style="width:100%; height:auto;" alt="Login"></div> | <div style="width:300px;"><img src="Screenshot_20250208_013616.png" style="width:100%; height:auto;" alt="Signup"></div> |
+|                  Login                   |                  Signup                   |
+|:----------------------------------------:|:-----------------------------------------:|
+| ![Login](Screenshot_20250208_013600.png) | ![Signup](Screenshot_20250208_013616.png) |
 
 ### News, Favorite & Details
 
-|         News          |        Favorite        |        Details         |
-|:---------------------:|:----------------------:|:----------------------:|
-| <div style="width:300px;"><img src="Screenshot_20250208_012023.png" style="width:100%; height:auto;" alt="News"></div> | <div style="width:300px;"><img src="Screenshot_20250208_013513.png" style="width:100%; height:auto;" alt="Favorite"></div> | <div style="width:300px;"><img src="Screenshot_20250208_013433.png" style="width:100%; height:auto;" alt="Details"></div> |
+|                  News                   |                  Favorite                   |                  Details                   |
+|:---------------------------------------:|:-------------------------------------------:|:------------------------------------------:|
+| ![News](Screenshot_20250208_012023.png) | ![Favorite](Screenshot_20250208_013513.png) | ![Details](Screenshot_20250208_013433.png) |
