@@ -18,10 +18,10 @@ features a clean, modern UI with interactive gestures such as swipe-to-delete an
 
 |         Login          |         Signup         |
 |:----------------------:|:----------------------:|
-| <img src="Screenshot_20250208_013600.png" width="300" alt="Login"> | <img src="Screenshot_20250208_013616.png" width="300" alt="Signup"> |
+| <div style="width:300px;"><img src="Screenshot_20250208_013600.png" style="width:100%; height:auto;" alt="Login"></div> | <div style="width:300px;"><img src="Screenshot_20250208_013616.png" style="width:100%; height:auto;" alt="Signup"></div> |
 
 ### News, Favorite & Details
 
 |         News          |        Favorite        |        Details         |
 |:---------------------:|:----------------------:|:----------------------:|
-| <img src="Screenshot_20250208_012023.png" width="300" alt="News"> | <img src="Screenshot_20250208_013513.png" width="300" alt="Favorite"> | <img src="Screenshot_20250208_013433.png" width="300" alt="Details"> |
+| <div style="width:300px;"><img src="Screenshot_20250208_012023.png" style="width:100%; height:auto;" alt="News"></div> | <div style="width:300px;"><img src="Screenshot_20250208_013513.png" style="width:100%; height:auto;" alt="Favorite"></div> | <div style="width:300px;"><img src="Screenshot_20250208_013433.png" style="width:100%; height:auto;" alt="Details"></div> |
