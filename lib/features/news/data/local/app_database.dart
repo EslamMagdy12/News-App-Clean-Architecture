@@ -9,13 +9,7 @@ import 'dao/article_dao.dart';
 
 part 'app_database.g.dart';
 
-@singleton
 @Database(version: 1, entities: [ArticleEntity])
 abstract class AppDatabase extends FloorDatabase {
   ArticleDao get articleDao;
-
-  @factoryMethod
-  static Future<AppDatabase> initDatabase() async {
-    return $FloorAppDatabase.databaseBuilder('app_database.db').build();
-  }
 }

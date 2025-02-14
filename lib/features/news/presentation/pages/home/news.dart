@@ -6,31 +6,32 @@ import 'package:news_app_clean_architecture/features/news/presentation/cubit/rem
 import 'package:news_app_clean_architecture/features/news/presentation/widgets/article_tile.dart';
 
 class News extends StatelessWidget {
-  const News({super.key});
+  News({super.key});
+
+  final AuthCubit authCubit = getIt<AuthCubit>();
+  final ArticleCubit articleCubit = getIt<ArticleCubit>();
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<ArticleCubit>(
-      future: getIt.getAsync<ArticleCubit>(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return const Scaffold(
-              body: Center(child: CircularProgressIndicator()));
-        }
-        return BlocProvider(
-          create: (context) => snapshot.data!..getArticles(),
-          child: Scaffold(
-            appBar: _buildAppBar(context),
-            body: Column(
-              children: [
-                _buildHeader(context),
-                const SizedBox(height: 8),
-                Expanded(child: _buildArticleList()),
-              ],
-            ),
-          ),
-        );
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthCubit>(
+          create: (_) => authCubit..checkSignInStatus(),
+        ),
+        BlocProvider<ArticleCubit>(
+          create: (_) => articleCubit..getArticles(),
+        ),
+      ],
+      child: Scaffold(
+        appBar: _buildAppBar(context),
+        body: Column(
+          children: [
+            _buildHeader(),
+            const SizedBox(height: 8),
+            Expanded(child: _buildArticleList()),
+          ],
+        ),
+      ),
     );
   }
 
@@ -47,17 +48,20 @@ class News extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(BuildContext context) {
-    return FutureBuilder(
-      future: getIt.get<AuthCubit>().getSignedInUser(),
-      builder: (context, snapshot) {
+  Widget _buildHeader() {
+    return BlocBuilder<AuthCubit, AuthState>(
+      builder: (context, state) {
+        String username = 'there';
+        if (state is AuthSuccess) {
+          username = state.user.username;
+        }
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Hello, ${snapshot.data?.username ?? 'there'} 👋',
+                'Hello, $username 👋',
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
@@ -85,7 +89,7 @@ class News extends StatelessWidget {
         }
         if (state is ArticleLoaded) {
           return RefreshIndicator(
-            onRefresh: () async => context.read<ArticleCubit>().getArticles(),
+            onRefresh: () async => articleCubit.getArticles(),
             child: ListView.separated(
               padding: const EdgeInsets.only(bottom: 24),
               itemCount: state.articles.length,
@@ -95,19 +99,22 @@ class News extends StatelessWidget {
             ),
           );
         }
-        return Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text('Failed to load articles'),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () => context.read<ArticleCubit>().getArticles(),
-                child: const Text('Retry'),
-              ),
-            ],
-          ),
-        );
+        if (state is ArticleError) {
+          return Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(state.error),
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () => articleCubit.getArticles(),
+                  child: const Text('Retry'),
+                ),
+              ],
+            ),
+          );
+        }
+        return const SizedBox.shrink();
       },
     );
   }

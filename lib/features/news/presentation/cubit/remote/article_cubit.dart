@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:news_app_clean_architecture/core/resources/data_state.dart';
 import 'package:news_app_clean_architecture/features/news/domain/entities/article.dart';
 import 'package:news_app_clean_architecture/features/news/domain/usecases/get_article.dart';
 import 'package:injectable/injectable.dart';
@@ -18,7 +19,11 @@ class ArticleCubit extends Cubit<ArticleState> {
     emit(ArticleLoading());
     try {
       final articles = await _getArticleUsecase();
-      emit(ArticleLoaded(articles));
+      if (articles is DataSuccess) {
+        emit(ArticleLoaded(articles.data!));
+      } else {
+        emit(ArticleError('Failed to load articles'));
+      }
     } catch (e) {
       emit(ArticleError('Failed to load articles: $e'));
     }

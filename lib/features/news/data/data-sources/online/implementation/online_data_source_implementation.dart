@@ -12,9 +12,9 @@ class OnlineDataSourceImplementation implements OnlineDataSource {
   OnlineDataSourceImplementation(this.newsApiService);
 
   @override
-  Future<ResponseAPI> getArticles() {
+  Future<ResponseAPI> getArticles() async {
     // TODO: implement getArticles
-    return newsApiService.getArticles(
+    return await newsApiService.getArticles(
       country: newsAPICountry,
       category: newsAPICategory,
       apiKey: newsAPIKey,

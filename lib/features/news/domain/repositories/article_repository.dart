@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:news_app_clean_architecture/core/resources/data_state.dart';
 import 'package:news_app_clean_architecture/core/resources/failure.dart';
 import 'package:news_app_clean_architecture/features/news/domain/entities/article.dart';
 
@@ -6,7 +7,7 @@ import 'package:news_app_clean_architecture/features/news/domain/entities/articl
 /// manipulating articles from online and offline data sources.
 abstract class ArticleRepository {
   /// Fetches articles from the online API.
-  Future<List<ArticleEntity>> getArticles();
+  Future<DataState<List<ArticleEntity>>> getArticles();
 
   /// Fetches articles stored locally.
   Future<List<ArticleEntity>> getLocalArticles();

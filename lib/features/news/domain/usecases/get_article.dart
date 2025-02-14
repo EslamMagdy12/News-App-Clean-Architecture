@@ -1,18 +1,15 @@
-import 'package:dartz/dartz.dart';
-import 'package:news_app_clean_architecture/core/resources/failure.dart';
-import 'package:news_app_clean_architecture/core/usecases/usecase.dart';
+import 'package:news_app_clean_architecture/core/resources/data_state.dart';
 import 'package:news_app_clean_architecture/features/news/domain/entities/article.dart';
 import 'package:news_app_clean_architecture/features/news/domain/repositories/article_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class GetArticleUsecase implements Usecase<List<ArticleEntity>, void> {
+class GetArticleUsecase {
   final ArticleRepository _articleRepository;
 
   GetArticleUsecase(this._articleRepository);
 
-  @override
-  Future<List<ArticleEntity>> call([void input]) {
+  Future<DataState<List<ArticleEntity>>> call() async {
     // TODO: implement call
     return _articleRepository.getArticles();
   }

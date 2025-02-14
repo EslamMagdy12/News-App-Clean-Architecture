@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:news_app_clean_architecture/core/constants/constants.dart';
+import 'package:news_app_clean_architecture/core/resources/data_state.dart';
 import 'package:news_app_clean_architecture/core/resources/failure.dart';
 import 'package:news_app_clean_architecture/core/utils/mapper.dart';
 import 'package:news_app_clean_architecture/features/news/domain/entities/article.dart';
@@ -21,13 +22,13 @@ class ArticleRepositoryImplementation implements ArticleRepository {
       this._offlineDataSource, this._onlineDataSource);
 
   @override
-  Future<List<ArticleEntity>> getArticles() async {
+  Future<DataState<List<ArticleEntity>>> getArticles() async {
     try {
-      final result = await _onlineDataSource.getArticles();
-      return result.articles?.map((article) => article.toEntity()).toList() ??
-          [];
-    } catch (e) {
-      throw Exception('Failed to fetch articles: \$e');
+      final response = await _onlineDataSource.getArticles();
+      final articles = response.articles?.map((e) => e.toEntity()).toList();
+      return DataSuccess(articles!);
+    } on DioException catch (e) {
+      return DataFailed(e);
     }
   }
 

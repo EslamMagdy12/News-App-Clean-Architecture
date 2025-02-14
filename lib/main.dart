@@ -8,7 +8,9 @@ import 'package:news_app_clean_architecture/core/di/di.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await configureInjection(); // Ensure all dependencies are initialized
+
+  await configureDependencies();
+  await getIt.allReady(); // ensures all async dependencies are resolved
   await Firebase.initializeApp();
   runApp(MyApp());
 }

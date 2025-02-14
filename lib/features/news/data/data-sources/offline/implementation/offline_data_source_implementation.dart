@@ -13,17 +13,17 @@ class OfflineDataSourceImplementation implements OfflineDataSource {
   @override
   Future<void> deleteArticle(String url) async {
     // TODO: implement deleteArticle
-    await _appDatabase.articleDao.deleteArticle(url);
+    _appDatabase.articleDao.deleteArticle(url);
   }
 
   @override
   Future<List<ArticleEntity>> findAllArticles() async {
-    return await _appDatabase.articleDao.findAllArticles();
+    return _appDatabase.articleDao.findAllArticles();
   }
 
   @override
   Future<void> insertArticle(ArticleEntity article) async {
     // TODO: implement insertArticle
-    await _appDatabase.articleDao.insertArticle(article);
+    _appDatabase.articleDao.insertArticle(article);
   }
 }

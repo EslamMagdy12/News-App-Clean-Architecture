@@ -4,7 +4,7 @@ import 'package:news_app_clean_architecture/features/news/domain/entities/articl
 import '../../features/auth/data/models/user_model.dart';
 import '../../features/auth/domain/entities/user_entity.dart';
 
-extension ArticleMapper on ArticleModel {
+extension ArticleMapper on Articles {
   ArticleEntity toEntity() {
     return ArticleEntity(
       author: author,

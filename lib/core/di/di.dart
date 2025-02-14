@@ -1,21 +1,17 @@
-import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:news_app_clean_architecture/features/news/data/repositories/article_repository_implementation.dart';
-import 'package:news_app_clean_architecture/features/news/domain/repositories/article_repository.dart';
-import 'package:news_app_clean_architecture/features/news/domain/usecases/get_article.dart';
-import 'package:news_app_clean_architecture/features/news/domain/usecases/get_saved_articles.dart';
-import 'package:news_app_clean_architecture/features/news/domain/usecases/remove_article.dart';
-import 'package:news_app_clean_architecture/features/news/domain/usecases/save_article.dart';
-import 'package:news_app_clean_architecture/features/news/presentation/cubit/local/local_article_cubit.dart';
+
 import 'di.config.dart';
 
 final getIt = GetIt.instance;
 
-@injectableInit
-Future<void> configureInjection() async {
-  await getIt.init(); // Ensure async dependencies are resolved
-}
+@InjectableInit(
+  initializerName: 'init', // default
+  preferRelativeImports: true, // default
+  asExtension: true, // default
+)
+Future<void> configureDependencies() async => getIt.init();
+// Ensure async dependencies are resolved
 
 // Future<void> initializeDependencies() async {
 //   // Floor

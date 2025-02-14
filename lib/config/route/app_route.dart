@@ -22,15 +22,15 @@ class RouteGenerator {
 
     switch (settings.name) {
       case AppRoutes.splash:
-        return MaterialPageRoute(builder: (_) => const News());
+        return MaterialPageRoute(builder: (_) => News());
       case AppRoutes.onboarding:
-        return MaterialPageRoute(builder: (_) => const News());
+        return MaterialPageRoute(builder: (_) => News());
       case AppRoutes.login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case AppRoutes.signup:
         return MaterialPageRoute(builder: (_) => const SignupScreen());
       case AppRoutes.home:
-        return MaterialPageRoute(builder: (_) => const News());
+        return MaterialPageRoute(builder: (_) => News());
       case AppRoutes.article:
         if (args is ArticleEntity) {
           return MaterialPageRoute(
